@@ -1,0 +1,591 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arham bin Azad</title>
+<meta name="description" content="Arham bin Azad, a software developer in Dubai who builds AI, data and web projects. Open to internships, full-time roles, freelance work and collaborations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0c0a; --surface:#16140f; --line:#2a261d; --text:#efe8da; --muted:#9a917f;
+  --accent:#f2a33a; --accent-2:#5fd4c4; --shadow:0 20px 50px -25px #000;
+}
+:root[data-theme="light"]{
+  --bg:#f6f1e7; --surface:#fffdf8; --line:#e2d9c6; --text:#1b1813; --muted:#6c6352;
+  --accent:#c46a00; --accent-2:#0f8a7c; --shadow:0 20px 40px -28px #6b5a3a66;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font:17px/1.6 "Bricolage Grotesque",system-ui,sans-serif;overflow-x:hidden;transition:background .3s,color .3s}
+a{color:inherit}
+button{font:inherit;color:inherit}
+.mono{font-family:"JetBrains Mono",ui-monospace,monospace}
+.wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* nav */
+nav{position:fixed;inset:0 0 auto;z-index:10;backdrop-filter:blur(10px);background:color-mix(in srgb,var(--bg) 75%,transparent);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:22px;height:58px}
+nav .logo{font-weight:800;text-decoration:none;margin-right:auto}
+nav .logo span{color:var(--accent)}
+nav a.l{font-size:14px;text-decoration:none;color:var(--muted)}
+nav a.l:hover{color:var(--text)}
+#theme{background:none;border:1px solid var(--line);border-radius:99px;padding:5px 12px;cursor:pointer;font-size:13px}
+@media (max-width:760px){nav a.l{display:none}}
+
+/* hero */
+header{position:relative;min-height:100vh;display:flex;align-items:center;padding:90px 0 60px}
+#field{position:absolute;inset:0;width:100%;height:100%}
+.hero{position:relative;pointer-events:none}
+.hero > *{pointer-events:auto}
+.tag{font-size:13px;color:var(--accent-2);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.live-dot{width:8px;height:8px;border-radius:50%;background:var(--accent-2);box-shadow:0 0 0 0 var(--accent-2);animation:pulse 2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px transparent}100%{box-shadow:0 0 0 0 transparent}}
+h1{font-size:clamp(46px,9vw,112px);line-height:.95;font-weight:800;letter-spacing:-.03em;margin:14px 0 18px}
+h1 em{font-style:normal;color:var(--accent)}
+.typed{font-size:clamp(18px,2.6vw,26px);color:var(--muted);min-height:1.6em}
+.typed b{color:var(--text);font-weight:600}
+.caret{display:inline-block;width:.55em;height:1.05em;background:var(--accent);vertical-align:-.15em;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.pitch{max-width:620px;margin-top:18px;font-size:19px}
+
+/* visitor picker */
+.picker{margin-top:34px;padding:18px;border:1px solid var(--line);border-radius:16px;background:color-mix(in srgb,var(--surface) 88%,transparent);max-width:760px}
+.picker p{font-size:13px;color:var(--muted);margin-bottom:12px}
+.who{display:flex;flex-wrap:wrap;gap:8px}
+.who button{border:1px solid var(--line);background:var(--bg);padding:9px 15px;border-radius:10px;cursor:pointer;font-size:15px;transition:border-color .15s,transform .15s}
+.who button:hover{border-color:var(--accent);transform:translateY(-1px)}
+.who button[aria-pressed="true"]{background:var(--accent);color:#1b1306;border-color:var(--accent);font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;border:1px solid var(--line);text-decoration:none;font-weight:600;background:var(--surface);transition:transform .15s,border-color .15s;cursor:pointer}
+.btn:hover{transform:translateY(-2px);border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:#1b1306;border-color:var(--accent)}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+
+section{padding:110px 0 40px;scroll-margin-top:40px}
+h2{font-size:clamp(32px,5vw,52px);letter-spacing:-.02em;line-height:1.05;margin-bottom:10px}
+h2 small{display:block;font-size:13px;color:var(--accent);letter-spacing:.1em;font-family:"JetBrains Mono",monospace;margin-bottom:10px;font-weight:400}
+.lead{color:var(--muted);max-width:640px;margin-bottom:36px}
+
+/* value panel (changes per visitor) */
+.value{border:1px solid var(--line);border-radius:22px;padding:clamp(24px,5vw,48px);background:radial-gradient(circle at 100% 0%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 50%),var(--surface)}
+.value .grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:26px 0 30px}
+.point{padding:18px;border-radius:14px;border:1px solid var(--line);background:var(--bg)}
+.point .ic{font-size:22px}
+.point h3{font-size:18px;margin:6px 0 4px}
+.point p{color:var(--muted);font-size:15px}
+.swap{transition:opacity .25s,transform .25s}
+.swap.out{opacity:0;transform:translateY(8px)}
+
+/* about + terminal */
+.about{display:grid;grid-template-columns:1fr 1.1fr;gap:40px;align-items:start}
+@media (max-width:860px){.about{grid-template-columns:1fr}}
+.facts{list-style:none;padding:0;display:grid;gap:12px}
+.facts li{padding:10px 0;border-bottom:1px solid var(--line)}
+.facts b{color:var(--accent)}
+.open{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.open span{font-size:13px;padding:4px 10px;border-radius:99px;border:1px solid color-mix(in srgb,var(--accent-2) 50%,transparent);color:var(--accent-2)}
+.term{background:#0a0907;color:#e9e1cf;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);overflow:hidden;font-size:14px}
+.term .bar{display:flex;gap:7px;padding:11px 14px;border-bottom:1px solid #2a261d;align-items:center}
+.term .bar i{width:11px;height:11px;border-radius:50%;background:#3a352b}
+.term .bar i:first-child{background:#e86b5f}.term .bar i:nth-child(2){background:#f2a33a}.term .bar i:nth-child(3){background:#5fd4c4}
+.term .bar span{margin-left:8px;color:#8a826f;font-size:12px}
+#out{height:330px;overflow-y:auto;padding:14px 16px;white-space:pre-wrap}
+#out .p{color:#5fd4c4}#out .a{color:#f2a33a}#out .m{color:#8a826f}
+.term form{display:flex;gap:8px;padding:0 16px 14px}
+.term form label{color:#5fd4c4}
+#cmd{flex:1;background:none;border:0;color:inherit;font:inherit;outline:none}
+.chips-row{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 14px}
+.chips-row button{background:#1c1913;border:1px solid #2a261d;color:#c9bfa9;border-radius:6px;padding:3px 9px;font-size:12px;cursor:pointer}
+.chips-row button:hover{border-color:#f2a33a;color:#f2a33a}
+
+/* projects */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
+.card{position:relative;border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:22px;display:flex;flex-direction:column;gap:12px;transition:transform .2s,border-color .2s,box-shadow .2s,opacity .3s}
+.card:hover{border-color:var(--accent);box-shadow:var(--shadow)}
+.grid .card.match{order:-1}
+.card .fit{display:none;position:absolute;top:-11px;left:18px;font-size:11px;padding:2px 9px;border-radius:99px;background:var(--accent-2);color:#06201d;font-weight:600}
+.card.match .fit{display:block}
+.card.match{border-color:color-mix(in srgb,var(--accent-2) 60%,var(--line))}
+.card .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.card h3{font-size:22px;line-height:1.15}
+.card .yr{font-size:12px;color:var(--muted)}
+.card p{color:var(--muted);font-size:15px}
+.card .why{font-size:14px;color:var(--text);border-left:2px solid var(--accent);padding-left:10px}
+.card .stat{font-size:13px;color:var(--accent-2)}
+.pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.pills span{font-size:12px;padding:3px 9px;border-radius:6px;background:color-mix(in srgb,var(--accent) 12%,transparent);color:var(--accent)}
+.links{display:flex;gap:16px;font-size:14px;flex-wrap:wrap}
+.links a{text-decoration:none;border-bottom:1px solid var(--accent)}
+.card.mystery{border-style:dashed;justify-content:center}
+.card.mystery h3{font-family:"JetBrains Mono",monospace;font-size:20px;letter-spacing:.04em}
+
+/* certifications: flip cards */
+.certs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.cert{perspective:1000px;height:300px;cursor:pointer;background:none;border:0;padding:0;text-align:left}
+.cert .inner{position:relative;width:100%;height:100%;transition:transform .7s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}
+.cert.flip .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;backface-visibility:hidden;border-radius:18px;border:1px solid var(--line);padding:22px;display:flex;flex-direction:column;gap:10px;overflow:hidden;background:var(--surface)}
+.cert:hover .face.front{border-color:var(--accent)}
+.seal{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:20px;color:#1b1306;background:var(--c,var(--accent));box-shadow:0 0 0 4px var(--surface),0 0 0 5px var(--c,var(--accent))}
+.face h3{font-size:20px;line-height:1.2}
+.face .iss{font-size:13px;color:var(--muted)}
+.face .flipme{margin-top:auto;font-size:12px;color:var(--accent-2)}
+.face.back{transform:rotateY(180deg)}
+.face.back img{width:100%;height:110px;object-fit:cover;object-position:top;border-radius:10px;border:1px solid var(--line)}
+.face.back ul{padding-left:18px;color:var(--muted);font-size:14px}
+.face.back a{color:var(--accent);font-size:14px;font-weight:600;text-decoration:none}
+.cert.wip .face{border-style:dashed}
+.edu{margin-top:30px;display:flex;gap:16px;align-items:center;padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--surface);flex-wrap:wrap}
+.edu .seal{--c:var(--accent-2)}
+
+/* live stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:18px}
+.stat-box{border:1px solid var(--line);border-radius:14px;padding:20px;background:var(--surface)}
+.stat-box .n{font-size:44px;font-weight:800;line-height:1;overflow-wrap:anywhere}
+.stat-box .k{color:var(--muted);font-size:14px}
+.langbar{display:flex;height:12px;border-radius:99px;overflow:hidden;margin:26px 0 10px;background:var(--line)}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13px;color:var(--muted)}
+.legend i{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:6px}
+
+/* contact */
+.contact{border:1px solid var(--line);border-radius:22px;padding:clamp(28px,6vw,60px);background:radial-gradient(circle at 85% 0%,color-mix(in srgb,var(--accent) 22%,transparent),transparent 55%),var(--surface)}
+footer{padding:40px 0 60px;color:var(--muted);font-size:13px}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{opacity:1;transform:none;transition:none}
+  .caret,.live-dot{animation:none}
+  .card,.btn,.cert .inner,.swap{transition:none}
+}
+</style>
+</head>
+<body>
+
+<nav aria-label="Main">
+  <div class="wrap">
+    <a class="logo" href="#top">arham<span>.</span>dev</a>
+    <a class="l" href="#value">For you</a>
+    <a class="l" href="#projects">Projects</a>
+    <a class="l" href="#certs">Certifications</a>
+    <a class="l" href="#about">About</a>
+    <a class="l" href="#contact">Contact</a>
+    <button id="theme" type="button" aria-label="Toggle light or dark theme">◐ theme</button>
+  </div>
+</nav>
+
+<header id="top">
+  <canvas id="field" aria-hidden="true"></canvas>
+  <div class="wrap hero">
+    <div class="tag mono"><span class="live-dot"></span> Available for internships · full-time · freelance · collabs</div>
+    <h1>Arham<br>bin <em>Azad</em></h1>
+    <p class="typed mono"><span class="sr" id="roles-sr"></span><span id="typed" aria-hidden="true"></span><span class="caret" aria-hidden="true"></span></p>
+    <p class="pitch" id="pitch"></p>
+    <div class="picker" role="group" aria-labelledby="whoq">
+      <p class="mono" id="whoq">👋 Who's visiting? Pick one and the page tailors itself to you.</p>
+      <div class="who" id="who"></div>
+    </div>
+  </div>
+</header>
+
+<main>
+<section id="value">
+  <div class="wrap">
+    <div class="value reveal">
+      <h2 class="swap" id="v-title"><small id="v-kicker">01 / FOR YOU</small><span></span></h2>
+      <p class="lead swap" id="v-lead" style="margin-bottom:0"></p>
+      <div class="grid3 swap" id="v-points"></div>
+      <div class="cta swap" id="v-cta"></div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2 class="reveal"><small>02 / PROJECTS</small>Selected work</h2>
+    <p class="lead reveal" id="p-lead">A few projects I'm proud of. Pick who you are above, and the most relevant ones are highlighted.</p>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section id="certs">
+  <div class="wrap">
+    <h2 class="reveal"><small>03 / CREDENTIALS</small>Certifications</h2>
+    <p class="lead reveal">Click a card to flip it and see what it covered and how to verify it.</p>
+    <div class="certs" id="certgrid"></div>
+    <div class="edu reveal">
+      <div class="seal mono">🎓</div>
+      <div><b>BSc Software Design</b> · Canadian University Dubai<br><span class="mono" style="color:var(--muted);font-size:14px">2022 – 2026 · Class of 2026</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <h2 class="reveal"><small>04 / ABOUT</small>A bit about me</h2>
+    <p class="lead reveal" id="bio"></p>
+    <div class="about">
+      <div class="reveal">
+        <ul class="facts" id="facts"></ul>
+        <div style="padding:10px 0"><b class="mono" style="color:var(--accent)">Open to:</b><div class="open" id="open"></div></div>
+      </div>
+      <div class="term reveal" role="region" aria-label="Interactive terminal">
+        <div class="bar"><i></i><i></i><i></i><span class="mono">arham@dubai: ~</span></div>
+        <div id="out" class="mono" aria-live="polite"></div>
+        <div class="chips-row mono" id="chips"></div>
+        <form id="tf" class="mono" autocomplete="off">
+          <label for="cmd">❯</label>
+          <input id="cmd" placeholder="type a command, e.g. help" spellcheck="false">
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="live">
+  <div class="wrap">
+    <h2 class="reveal"><small>05 / LIVE</small>Straight from GitHub</h2>
+    <p class="lead reveal">These numbers load live from the GitHub API each time you open the page.</p>
+    <div class="stats">
+      <div class="stat-box"><div class="n" id="s-repos">–</div><div class="k">public repos</div></div>
+      <div class="stat-box"><div class="n" id="s-langs">–</div><div class="k">languages used</div></div>
+      <div class="stat-box"><div class="n" id="s-recent" style="font-size:24px">–</div><div class="k">last pushed to</div></div>
+    </div>
+    <div class="langbar" id="langbar" aria-hidden="true"></div>
+    <div class="legend" id="legend"></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact reveal">
+      <h2><small>06 / CONTACT</small>Let's build something.</h2>
+      <p class="lead" id="c-lead">Email is the fastest way to reach me. I'm also on LinkedIn.</p>
+      <div class="cta" id="contactlinks"></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap mono">© <span id="yr"></span> Arham bin Azad · hand-made, no frameworks · <a href="https://github.com/ArhamAzad2004/ArhamAzad2004.github.io">source</a></div></footer>
+
+<script>
+/* ================= EDIT YOUR INFO HERE ================= */
+const ME = {
+  user: "ArhamAzad2004",
+  email: "arhamazad2004@gmail.com",
+  pitch: "I turn messy data and hard ideas into working, explainable software, and I build it fast: hackathon prototypes that actually run, algorithms you can watch, and AI that shows its reasoning.",
+  bio: "Software Design student at Canadian University Dubai (Class of 2026). I like the whole journey from a vague problem to something people can click on: data pipelines, models, and an interface that makes the result obvious.",
+  roles: ["software developer", "AI & data builder", "hackathon prototyper", "algorithm nerd"],
+  facts: [
+    ["Studying", "BSc Software Design, Canadian University Dubai, Class of 2026"],
+    ["Based in", "Dubai, UAE"],
+    ["Speaks", "English (advanced), Bangla (native)"],
+    ["Currently", "building something new. See the mystery card 👀"]
+  ],
+  openTo: ["Internships", "Full-time roles", "Freelance", "Collaborations"],
+  contact: [
+    ["Email me", "mailto:arhamazad2004@gmail.com"],
+    ["GitHub", "https://github.com/ArhamAzad2004"],
+    ["LinkedIn", "https://www.linkedin.com/in/arham-azad-4a678a305/"],
+  ]
+};
+
+/* What each kind of visitor sees. `focus` = project ids to highlight. */
+const AUDIENCES = {
+  hr: { label: "🧑‍💼 HR / Recruiter", kicker: "01 / FOR RECRUITERS",
+    title: "Hiring for a software, AI or data role?",
+    lead: "Here's the short version of why I'd be a good fit on your team.",
+    points: [
+      ["🎓", "Graduating 2026", "BSc Software Design at Canadian University Dubai. Ready for internships now and full-time roles after graduation."],
+      ["🚢", "Ships end to end", "Python back ends, JavaScript/TypeScript front ends, Docker and tests. Sentinel Dubai has all of them."],
+      ["✅", "Certified & curious", "IBM Python for Data Science (Coursera) and the Hugging Face Agents course, with more in progress."]
+    ],
+    cta: [["Email me", "mailto:{email}?subject=Opportunity%20for%20Arham", true], ["See certifications", "#certs"]],
+    focus: ["sentinel", "algo", "medgenius"] },
+  collab: { label: "🤝 Collaborator", kicker: "01 / FOR COLLABORATORS",
+    title: "Want to build something together?",
+    lead: "Here's what I bring to a team or side project.",
+    points: [
+      ["⚡", "Fast prototypes", "I go from idea to a working demo quickly. Sentinel Dubai went from challenge brief to a validated prototype in a hackathon."],
+      ["🧠", "Data + UI in one person", "Comfortable with models and pipelines and with the interface, so ideas don't get stuck between the two."],
+      ["🧪", "Proof, not vibes", "I back-test, validate and document, so the team can trust what we ship."]
+    ],
+    cta: [["Pitch me your idea", "mailto:{email}?subject=Let's%20build%20something", true], ["Browse my code", "https://github.com/ArhamAzad2004"]],
+    focus: ["sentinel", "medgenius"] },
+  client: { label: "💼 Client", kicker: "01 / FOR CLIENTS",
+    title: "Need something built?",
+    lead: "Websites, data tools and AI features that work, explained in plain language.",
+    points: [
+      ["🌐", "Web apps & sites", "Fast, responsive sites and web apps, from landing pages to dashboards."],
+      ["🤖", "AI features", "Chat assistants, recommendations and smart search built on OpenAI, Hugging Face or your own data."],
+      ["📊", "Dashboards & data tools", "Turn spreadsheets and data feeds into something your team can read at a glance."]
+    ],
+    cta: [["Tell me about your project", "mailto:{email}?subject=Project%20inquiry", true], ["See past work", "#projects"]],
+    focus: ["medgenius", "movie", "sentinel"] },
+  dev: { label: "👩‍💻 Student / Dev", kicker: "01 / FOR FELLOW BUILDERS",
+    title: "Hey, fellow builder 👋",
+    lead: "Steal ideas, read the code, or team up for the next hackathon.",
+    points: [
+      ["📐", "Algorithms you can see", "FFT, Miller-Rabin, Rabin-Karp and TSP visualizers, each a single HTML file with zero libraries."],
+      ["🏁", "Hackathon teammate", "Always up for a hackathon team, especially AI, data or health tech."],
+      ["💬", "Talk to the terminal", "Scroll down and type <code>help</code>. Yes, it's a real terminal."]
+    ],
+    cta: [["My GitHub", "https://github.com/ArhamAzad2004", true], ["Open the terminal", "#about"]],
+    focus: ["algo", "movie"] }
+};
+
+const PROJECTS = [
+  {id:"sentinel", name:"Sentinel Dubai", repo:"health-early-warning", year:2026,
+   desc:"Explainable, privacy-preserving early warning for population and workforce health. Fuses clinic visits, labs, sick leave, heat and air quality into alerts that say what to do and who should do it.",
+   why:"Shows end-to-end delivery: data simulation, detection, explainability, validation and a polished UI.",
+   stat:"On simulated data: caught both test outbreaks 3–5 days early · 80% precision", stack:["Python","JavaScript","Docker"]},
+  {id:"algo", name:"Algorithm Visualizers", repo:"Algorithm-Final-Project-", year:2026,
+   desc:"Interactive visualizers for FFT polynomial multiplication, Miller-Rabin, Rabin-Karp and Metric TSP approximation. Each is a single HTML file with zero dependencies.",
+   why:"Shows strong CS fundamentals and the ability to explain hard ideas visually.",
+   stat:"BSD 404 Algorithm Analysis final project", stack:["Vanilla JS","HTML","CSS"],
+   extra:["Odd-Even / FFT version","https://github.com/ArhamAzad2004/bsd404-project-Alogirthm-visualizer"]},
+  {id:"medgenius", name:"MedGenius", repo:"medgenius", year:2025, demo:"https://medgenius-demo.vercel.app",
+   desc:"Healthcare assistant that analyses medical reports, tracks health trends and scans medicines. Built with a team.",
+   why:"Shows teamwork on a real product with auth, a database and a live deployment.",
+   stat:"Team project · live demo on Vercel", stack:["TypeScript","Next.js","Supabase"]},
+  {id:"movie", name:"AI Movie Guide", repo:"AI-MovieGuide", year:2025,
+   desc:"Ask for a movie in plain English. GPT works out what you mean, then TMDb returns the top five matches.",
+   why:"Shows how I wire LLMs to real APIs to make a useful feature.",
+   stat:"OpenAI + TMDb APIs", stack:["Python","OpenAI"]}
+];
+/* The mystery card. When the project is public, move it into PROJECTS. */
+const NEXT = {id:"next", teaser:"Something new is in the works. Data, AI, and a problem worth solving."};
+
+const CERTS = [
+  {name:"Python for Data Science, AI & Development", issuer:"IBM · Coursera", date:"Jan 2024", mark:"IBM", color:"#5fd4c4",
+   covered:["Python fundamentals & data structures","Pandas, NumPy, working with APIs","Web scraping & data collection"],
+   verify:"https://coursera.org/verify/467DSP8VRGK3"},
+  {name:"Fundamentals of Agents (Unit 1)", issuer:"Hugging Face · Agents Course", date:"Oct 2025", mark:"🤗", color:"#f2a33a",
+   covered:["How LLM agents think, act and observe","Tools and function calling","Building a first agent"],
+   image:"assets/hf-agents-cert.webp"},
+  {name:"Python Certification", issuer:"Planned", date:"2026", wip:true,
+   covered:["Next step: a formal Python certification"]},
+  {name:"GitHub Certification", issuer:"Planned", date:"2026", wip:true,
+   covered:["Next step: GitHub Foundations"]}
+];
+/* ====================================================== */
+
+const $ = s => document.querySelector(s);
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const fill = s => s.replace("{email}", ME.email);
+const store = { get: k => { try { return localStorage.getItem(k); } catch { return null; } },
+                set: (k, v) => { try { localStorage.setItem(k, v); } catch {} } };
+$("#yr").textContent = new Date().getFullYear();
+$("#pitch").textContent = ME.pitch;
+$("#bio").textContent = ME.bio;
+
+/* theme */
+const root = document.documentElement;
+if (store.get("theme")) root.dataset.theme = store.get("theme");
+$("#theme").onclick = () => { root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light"; store.set("theme", root.dataset.theme); };
+
+/* typing roles */
+(() => {
+  const el = $("#typed");
+  $("#roles-sr").textContent = "I'm a " + ME.roles.join(", ");
+  if (reduce) { el.innerHTML = "<b>" + ME.roles.join(" · ") + "</b>"; return; }
+  let r = 0, i = 0, del = false;
+  (function tick() {
+    const word = ME.roles[r];
+    i += del ? -1 : 1;
+    el.innerHTML = "I'm a <b>" + esc(word.slice(0, i)) + "</b>";
+    let wait = del ? 40 : 80;
+    if (!del && i === word.length) { del = true; wait = 1600; }
+    else if (del && i === 0) { del = false; r = (r + 1) % ME.roles.length; wait = 300; }
+    setTimeout(tick, wait);
+  })();
+})();
+
+/* interactive dot field: dots lean away from the cursor */
+(() => {
+  const c = $("#field"), x = c.getContext("2d");
+  let W, H, dots = [], mx = -9999, my = -9999, raf, visible = true;
+  function size() {
+    const d = devicePixelRatio || 1;
+    W = c.clientWidth; H = c.clientHeight;
+    c.width = W * d; c.height = H * d; x.setTransform(d, 0, 0, d, 0, 0);
+    dots = [];
+    const gap = W < 640 ? 34 : 28;
+    for (let y = gap / 2; y < H; y += gap) for (let X = gap / 2; X < W; X += gap) dots.push({ox: X, oy: y, x: X, y});
+  }
+  function draw() {
+    const css = getComputedStyle(root), acc = css.getPropertyValue("--accent").trim(), mut = css.getPropertyValue("--line").trim();
+    x.clearRect(0, 0, W, H);
+    for (const p of dots) {
+      const dx = p.ox - mx, dy = p.oy - my, d = Math.hypot(dx, dy), f = Math.max(0, 1 - d / 160);
+      p.x += (p.ox + dx / (d || 1) * f * 26 - p.x) * .15;
+      p.y += (p.oy + dy / (d || 1) * f * 26 - p.y) * .15;
+      x.fillStyle = f > 0.02 ? acc : mut;
+      x.globalAlpha = .35 + f * .65;
+      x.beginPath(); x.arc(p.x, p.y, 1.4 + f * 1.8, 0, 7); x.fill();
+    }
+    x.globalAlpha = 1;
+    if (!reduce && visible) raf = requestAnimationFrame(draw);
+  }
+  size(); draw();
+  addEventListener("resize", () => { size(); if (reduce) draw(); });
+  addEventListener("pointermove", e => { const r = c.getBoundingClientRect(); mx = e.clientX - r.left; my = e.clientY - r.top; });
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; cancelAnimationFrame(raf); if (visible) draw(); }).observe(c);
+})();
+
+/* facts, open-to, contact */
+$("#facts").innerHTML = ME.facts.map(([k, v]) => `<li><b class="mono">${esc(k)}:</b> ${esc(v)}</li>`).join("");
+$("#open").innerHTML = ME.openTo.map(o => `<span class="mono">${esc(o)}</span>`).join("");
+$("#contactlinks").innerHTML = ME.contact.map(([k, v], i) => `<a class="btn${i ? "" : " primary"}" href="${esc(v)}" ${v.startsWith("http") ? 'target="_blank" rel="noopener"' : ""}>${esc(k)} ↗</a>`).join("");
+
+/* projects */
+const gh = r => `https://github.com/${ME.user}/${r}`;
+$("#grid").innerHTML = PROJECTS.map(p => `
+  <article class="card reveal" data-id="${p.id}">
+    <span class="fit mono">★ relevant to you</span>
+    <div class="top"><h3>${esc(p.name)}</h3><span class="yr mono">${p.year}</span></div>
+    <p>${esc(p.desc)}</p>
+    <div class="why">${esc(p.why)}</div>
+    <div class="stat mono">↳ ${esc(p.stat)}</div>
+    <div class="pills">${p.stack.map(s => `<span class="mono">${esc(s)}</span>`).join("")}</div>
+    <div class="links">
+      <a href="${gh(p.repo)}" target="_blank" rel="noopener">Code</a>
+      ${p.demo ? `<a href="${esc(p.demo)}" target="_blank" rel="noopener">Live demo</a>` : ""}
+      ${p.extra ? `<a href="${esc(p.extra[1])}" target="_blank" rel="noopener">${esc(p.extra[0])}</a>` : ""}
+    </div>
+  </article>`).join("") + `
+  <article class="card mystery reveal" data-id="${NEXT.id}">
+    <span class="fit mono">★ relevant to you</span>
+    <div class="top"><span class="yr mono">CURRENTLY BUILDING</span><span class="yr mono">${new Date().getFullYear()}</span></div>
+    <h3 aria-label="Classified project">████ ██████</h3>
+    <p>${esc(NEXT.teaser)}</p>
+    <div class="stat mono">↳ in progress · stay tuned</div>
+  </article>`;
+/* gentle 3D tilt on project cards */
+if (!reduce && matchMedia("(hover:hover)").matches) document.querySelectorAll(".card").forEach(c => {
+  c.onpointermove = e => { const r = c.getBoundingClientRect(), px = (e.clientX - r.left) / r.width - .5, py = (e.clientY - r.top) / r.height - .5;
+    c.style.transform = `perspective(700px) rotateY(${px * 6}deg) rotateX(${-py * 6}deg) translateY(-3px)`; };
+  c.onpointerleave = () => c.style.transform = "";
+});
+
+/* certifications: flip cards */
+$("#certgrid").innerHTML = CERTS.map((c, i) => {
+  const front = c.wip
+    ? `<div class="seal mono" style="--c:var(--line);color:var(--muted)">…</div>`
+    : `<div class="seal mono" style="--c:${c.color}">${esc(c.mark)}</div>`;
+  const back = `
+    ${c.image ? `<img src="${esc(c.image)}" alt="Certificate: ${esc(c.name)}" loading="lazy">` : ""}
+    <b>${c.wip ? "Coming next" : "What it covered"}</b>
+    <ul>${c.covered.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+    ${c.verify ? `<a href="${esc(c.verify)}" target="_blank" rel="noopener">Verify credential ↗</a>` : ""}
+    ${c.image ? `<a href="${esc(c.image)}" target="_blank" rel="noopener">View certificate ↗</a>` : ""}`;
+  return `<div class="cert reveal${c.wip ? " wip" : ""}" role="button" tabindex="0" aria-pressed="false" aria-label="${esc(c.name)}. Press to flip.">
+    <div class="inner">
+      <div class="face front">${front}<h3>${esc(c.name)}</h3><div class="iss mono">${esc(c.issuer)} · ${esc(c.date)}</div><div class="flipme mono">↻ click to flip</div></div>
+      <div class="face back">${back}</div>
+    </div></div>`;
+}).join("");
+document.querySelectorAll(".cert").forEach(c => {
+  const flip = e => { if (e.target.closest("a")) return; c.classList.toggle("flip"); c.setAttribute("aria-pressed", c.classList.contains("flip")); };
+  c.onclick = flip;
+  c.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(e); } };
+});
+
+/* visitor picker: tailors the value panel, project highlights and contact copy */
+function setAudience(key, scroll) {
+  const a = AUDIENCES[key];
+  document.querySelectorAll("#who button").forEach(b => b.setAttribute("aria-pressed", b.dataset.k === key));
+  const parts = ["#v-title", "#v-lead", "#v-points", "#v-cta"].map(s => $(s));
+  parts.forEach(p => p.classList.add("out"));
+  setTimeout(() => {
+    $("#v-kicker").textContent = a.kicker;
+    $("#v-title span").textContent = a.title;
+    $("#v-lead").textContent = a.lead;
+    $("#v-points").innerHTML = a.points.map(([ic, h, t]) => `<div class="point"><div class="ic">${ic}</div><h3>${esc(h)}</h3><p>${t}</p></div>`).join("");
+    $("#v-cta").innerHTML = a.cta.map(([t, h, pri]) => { h = fill(h); return `<a class="btn${pri ? " primary" : ""}" href="${esc(h)}" ${h.startsWith("http") ? 'target="_blank" rel="noopener"' : ""}>${esc(t)} →</a>`; }).join("");
+    parts.forEach(p => p.classList.remove("out"));
+  }, reduce ? 0 : 200);
+  document.querySelectorAll("#grid .card").forEach(c => {
+    const hit = a.focus.includes(c.dataset.id);
+    c.classList.toggle("match", hit);
+  });
+  $("#p-lead").textContent = `The projects most relevant to you as a ${a.label.replace(/^\S+\s/, "").toLowerCase()} are moved to the front and marked.`;
+  store.set("audience", key);
+  if (scroll) $("#value").scrollIntoView({behavior: reduce ? "auto" : "smooth"});
+}
+$("#who").innerHTML = Object.entries(AUDIENCES).map(([k, a]) => `<button type="button" data-k="${k}" aria-pressed="false">${a.label}</button>`).join("");
+$("#who").onclick = e => { const b = e.target.closest("button"); if (b) setAudience(b.dataset.k, true); };
+setAudience(AUDIENCES[store.get("audience")] ? store.get("audience") : "hr", false);
+
+/* terminal */
+(() => {
+  const out = $("#out"), inp = $("#cmd"), hist = []; let hi = 0;
+  const say = html => { out.insertAdjacentHTML("beforeend", `<div>${html}</div>`); out.scrollTop = out.scrollHeight; };
+  const C = {
+    help: () => "commands: <span class='a'>about  skills  projects  certs  hire  contact  whoami  open &lt;n&gt;  theme  clear</span>",
+    about: () => esc(ME.bio),
+    whoami: () => "arham: " + ME.roles.join(", "),
+    skills: () => ["<span class='a'>Languages</span>: Python, TypeScript, JavaScript, Java, Dart, C++",
+                   "<span class='a'>AI & Data</span>: OpenAI API, Hugging Face agents, LangChain, Faiss, Pandas",
+                   "<span class='a'>Web</span>: React, Next.js, Supabase, Flutter, Streamlit, Docker"].join("\n"),
+    projects: () => PROJECTS.map((p, i) => `<span class='a'>${i + 1}.</span> ${esc(p.name)} <span class='m'>(${p.year})</span>`).join("\n") + `\n<span class='a'>?.</span> ██████ <span class='m'>(in progress)</span>\n<span class='m'>try: open 1</span>`,
+    certs: () => CERTS.map(c => `${c.wip ? "◌" : "✓"} ${esc(c.name)} <span class='m'>· ${esc(c.issuer)}</span>`).join("\n"),
+    hire: () => { setAudience("hr", true); return "switched the page to recruiter mode ↑. Or just email: <span class='a'>" + ME.email + "</span>"; },
+    contact: () => ME.contact.map(([k, v]) => `${esc(k)}: <a href="${esc(v)}" target="_blank" rel="noopener">${esc(v.replace("mailto:", ""))}</a>`).join("\n"),
+    theme: () => { $("#theme").click(); return "theme switched to " + root.dataset.theme; },
+    open: a => { const p = PROJECTS[+a - 1] || (a && PROJECTS.find(p => p.name.toLowerCase().includes(a.toLowerCase())));
+      if (!p) return "usage: open &lt;number or name&gt;"; window.open(gh(p.repo), "_blank", "noopener"); return "opening " + esc(p.name) + "…"; },
+    sudo: () => "nice try 😄 you're not in the sudoers file.",
+    clear: () => { out.innerHTML = ""; return null; }
+  };
+  function run(line) {
+    const [c, ...a] = line.trim().split(/\s+/); if (!c) return;
+    say(`<span class="p">❯</span> ${esc(line)}`);
+    const f = C[c.toLowerCase()], r = f ? f(a.join(" ")) : `command not found: ${esc(c)}. type <span class='a'>help</span>`;
+    if (r) say(r);
+  }
+  say("<span class='m'>welcome! this terminal is real. Type <span class='a'>help</span> or tap a command below.</span>");
+  $("#chips").innerHTML = ["help", "about", "skills", "projects", "certs", "hire", "sudo"].map(c => `<button type="button">${c}</button>`).join("");
+  $("#chips").onclick = e => { const b = e.target.closest("button"); if (b) run(b.textContent); };
+  $("#tf").onsubmit = e => { e.preventDefault(); hist.push(inp.value); hi = hist.length; run(inp.value); inp.value = ""; };
+  inp.onkeydown = e => {
+    if (e.key === "ArrowUp" && hi > 0) { inp.value = hist[--hi]; e.preventDefault(); }
+    if (e.key === "ArrowDown") { inp.value = hist[++hi] ?? ""; hi = Math.min(hi, hist.length); }
+    if (e.key === "Tab" && inp.value) { e.preventDefault(); const m = Object.keys(C).find(k => k.startsWith(inp.value)); if (m) inp.value = m; }
+  };
+})();
+
+/* live GitHub stats (public API, no key; 60 requests/hour per visitor) */
+(async () => {
+  try {
+    const [u, repos] = await Promise.all([
+      fetch(`https://api.github.com/users/${ME.user}`).then(r => r.json()),
+      fetch(`https://api.github.com/users/${ME.user}/repos?per_page=100&sort=pushed`).then(r => r.json())
+    ]);
+    if (!Array.isArray(repos)) throw 0;
+    const own = repos.filter(r => !r.fork);
+    $("#s-repos").textContent = u.public_repos;
+    $("#s-recent").textContent = own[0] ? own[0].name : "–";
+    const count = {};
+    own.forEach(r => r.language && (count[r.language] = (count[r.language] || 0) + 1));
+    const langs = Object.entries(count).sort((a, b) => b[1] - a[1]), total = langs.reduce((s, l) => s + l[1], 0);
+    $("#s-langs").textContent = langs.length;
+    const pal = ["#f2a33a", "#5fd4c4", "#e86b5f", "#a78bfa", "#7fb069", "#d4a5a5", "#8a826f"];
+    $("#langbar").innerHTML = langs.map(([, n], i) => `<span style="width:${n / total * 100}%;background:${pal[i % pal.length]}"></span>`).join("");
+    $("#legend").innerHTML = langs.map(([l, n], i) => `<span><i style="background:${pal[i % pal.length]}"></i>${esc(l)} ${Math.round(n / total * 100)}%</span>`).join("");
+  } catch { $("#legend").textContent = "GitHub API is busy right now. Refresh in a minute."; }
+})();
+
+/* scroll reveal */
+const io = new IntersectionObserver(es => es.forEach(e => e.isIntersecting && (e.target.classList.add("in"), io.unobserve(e.target))), {threshold: .12});
+document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+</script>
+</body>
+</html>
